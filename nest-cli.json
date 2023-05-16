@@ -1,8 +1,32 @@
 {
   "$schema": "https://json.schemastore.org/nest-cli",
   "collection": "@nestjs/schematics",
-  "sourceRoot": "src",
+  "sourceRoot": "apps/lambda-one/src",
   "compilerOptions": {
-    "deleteOutDir": true
+    "deleteOutDir": true,
+    "webpack": true,
+    "tsConfigPath": "apps/lambda-one/tsconfig.app.json"
+  },
+  "monorepo": true,
+  "root": "apps/lambda-one",
+  "projects": {
+    "lambda-one": {
+      "type": "application",
+      "root": "apps/lambda-one",
+      "entryFile": "main",
+      "sourceRoot": "apps/lambda-one/src",
+      "compilerOptions": {
+        "tsConfigPath": "apps/lambda-one/tsconfig.app.json"
+      }
+    },
+    "lambda-two": {
+      "type": "application",
+      "root": "apps/lambda-two",
+      "entryFile": "main",
+      "sourceRoot": "apps/lambda-two/src",
+      "compilerOptions": {
+        "tsConfigPath": "apps/lambda-two/tsconfig.app.json"
+      }
+    }
   }
 }
