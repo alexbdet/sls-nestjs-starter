@@ -1,0 +1,25 @@
+service: sls-nestjs-starter
+
+provider:
+  name: aws
+  runtime: nodejs18.x
+  	
+plugins:
+ - serverless-plugin-typescript
+ - serverless-plugin-optimize
+ - serverless-offline
+
+functions:
+  lambda1:
+    handler: apps/lambda-one/src/main.handler
+    events:
+      - http:
+          path: lambda-one
+          method: any
+
+  lambda2:
+    handler: apps/lambda-two/src/main.handler
+    events:
+      - http:
+          path: lambda-two
+          method: any
