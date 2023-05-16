@@ -5,21 +5,7 @@ provider:
   runtime: nodejs18.x
   	
 plugins:
- - serverless-plugin-typescript
- - serverless-plugin-optimize
- - serverless-offline
+  - ${file(./serverless/plugins.yml)}
 
 functions:
-  lambda1:
-    handler: apps/lambda-one/src/main.handler
-    events:
-      - http:
-          path: lambda-one
-          method: any
-
-  lambda2:
-    handler: apps/lambda-two/src/main.handler
-    events:
-      - http:
-          path: lambda-two
-          method: any
+  - ${file(./serverless/functions/functions.yml)}
